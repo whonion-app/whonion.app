@@ -210,6 +210,36 @@ body.is-instant:after {
 	transition: none !important;
 }
 
+@keyframes onvisible-slide-left {
+	0% {
+		visibility: hidden;
+		transform: translateX(100vw);
+	}
+
+	1% {
+		visibility: visible;
+	}
+
+	100% {
+		transform: translateX(0);
+	}
+}
+
+@keyframes onvisible-slide-right {
+	0% {
+		visibility: hidden;
+		transform: translateX(-100vw);
+	}
+
+	1% {
+		visibility: visible;
+	}
+
+	100% {
+		transform: translateX(0);
+	}
+}
+
 .container {
 	position: relative;
 }
