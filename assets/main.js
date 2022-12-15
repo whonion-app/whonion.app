@@ -792,8 +792,8 @@
 						// Lsd units available?
 							if (client.flags.lsdUnits) {
 	
-								document.documentElement.style.setProperty('--viewport-height', '100dvh');
-								document.documentElement.style.setProperty('--background-height', '100lvh');
+								document.documentElement.style.setProperty('--viewport-height', '100svh');
+								document.documentElement.style.setProperty('--background-height', '100dvh');
 	
 							}
 	
@@ -806,7 +806,6 @@
 								};
 	
 								on('load', f);
-								on('resize', f);
 								on('orientationchange', function() {
 	
 									// Update after brief delay.
