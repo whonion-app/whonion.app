@@ -1143,63 +1143,25 @@
 					},
 				},
 				'slide-left': {
-					custom: true,
 					transition: function (speed, delay) {
-	
-						this.style.setProperty('--onvisible-speed', speed + 's');
-	
-						if (delay) {
-	
-							this.style.transition = 'opacity 0s linear ' + delay + 's';
-							this.style.setProperty('--onvisible-delay', delay + 's');
-	
-						}
-	
+						return 'transform ' + speed + 's ease' + (delay ? ' ' + delay + 's' : '');
 					},
 					rewind: function() {
-	
-						this.style.animation = 'none';
-						this.style.opacity = 0;
-	
+						this.style.transform = 'translateX(100vw)';
 					},
 					play: function() {
-	
-						this.style.opacity = 1;
-						this.style.animationName = 'onvisible-slide-left';
-						this.style.animationTimingFunction = 'ease';
-						this.style.animationDuration = 'var(--onvisible-speed)';
-						this.style.animationDelay = 'var(--onvisible-delay)';
-	
+						this.style.transform = 'none';
 					},
 				},
 				'slide-right': {
-					custom: true,
 					transition: function (speed, delay) {
-	
-						this.style.setProperty('--onvisible-speed', speed + 's');
-	
-						if (delay) {
-	
-							this.style.transition = 'opacity 0s linear ' + delay + 's';
-							this.style.setProperty('--onvisible-delay', delay + 's');
-	
-						}
-	
+						return 'transform ' + speed + 's ease' + (delay ? ' ' + delay + 's' : '');
 					},
 					rewind: function() {
-	
-						this.style.animation = 'none';
-						this.style.opacity = 0;
-	
+						this.style.transform = 'translateX(-100vw)';
 					},
 					play: function() {
-	
-						this.style.opacity = 1;
-						this.style.animationName = 'onvisible-slide-right';
-						this.style.animationTimingFunction = 'ease';
-						this.style.animationDuration = 'var(--onvisible-speed)';
-						this.style.animationDelay = 'var(--onvisible-delay)';
-	
+						this.style.transform = 'none';
 					},
 				},
 				'flip-forward': {

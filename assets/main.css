@@ -210,36 +210,6 @@ body.is-instant:after {
 	transition: none !important;
 }
 
-@keyframes onvisible-slide-left {
-	0% {
-		visibility: hidden;
-		transform: translateX(100vw);
-	}
-
-	1% {
-		visibility: visible;
-	}
-
-	100% {
-		transform: translateX(0);
-	}
-}
-
-@keyframes onvisible-slide-right {
-	0% {
-		visibility: hidden;
-		transform: translateX(-100vw);
-	}
-
-	1% {
-		visibility: visible;
-	}
-
-	100% {
-		transform: translateX(0);
-	}
-}
-
 .container {
 	position: relative;
 }
@@ -1095,14 +1065,14 @@ hr.style1:before {
 	font-weight: 200;
 }
 
-.list.style1 mark {
-	color: #1F96ED;
-	background-color: transparent;
-}
-
 .list.style1 code {
 	color: #141414;
 	background-color: #424242;
+}
+
+.list.style1 mark {
+	color: #1F96ED;
+	background-color: transparent;
 }
 
 .list.style1 a {
