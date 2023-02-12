@@ -431,10 +431,15 @@
 	// "On Load" animation.
 		on('load', function() {
 			setTimeout(function() {
-				$body.className = $body.className.replace(/\bis-loading\b/, 'is-playing');
+	
+				$body.classList.remove('is-loading');
+				$body.classList.add('is-playing');
 	
 				setTimeout(function() {
-					$body.className = $body.className.replace(/\bis-playing\b/, 'is-ready');
+	
+					$body.classList.remove('is-playing');
+					$body.classList.add('is-ready');
+	
 				}, 500);
 			}, 100);
 		});
@@ -447,10 +452,9 @@
 	
 			var	scrollPointParent = function(target) {
 	
-					var inner, target;
+					var inner;
 	
 					inner = $('#main > .inner');
-					target = event.target;
 	
 					while (target && target.parentElement != inner)
 						target = target.parentElement;
@@ -957,10 +961,33 @@
 							&&	!item.leave)
 								return true;
 	
-						// No trigger element, or not visible? Bail.
-							if (!item.triggerElement
-							||	item.triggerElement.offsetParent === null)
+						// No trigger element? Bail.
+							if (!item.triggerElement)
 								return true;
+	
+						// Trigger element not visible?
+							if (item.triggerElement.offsetParent === null) {
+	
+								// Current state is active *and* leave handler exists?
+									if (item.state == true
+									&&	item.leave) {
+	
+										// Reset state to false.
+											item.state = false;
+	
+										// Call it.
+											(item.leave).apply(item.element);
+	
+										// No enter handler? Unbind leave handler (so we don't check this element again).
+											if (!item.enter)
+												item.leave = null;
+	
+									}
+	
+								// Bail.
+									return true;
+	
+							}
 	
 						// Get element position.
 							bcr = item.triggerElement.getBoundingClientRect();
